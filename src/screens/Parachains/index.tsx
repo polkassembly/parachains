@@ -70,5 +70,9 @@ export default styled(Parachains)`
 		overflow-x: auto !important;
 		flex-wrap: nowrap;
 		max-width: 99.9%;
+
+		@media only screen and (max-width: 768px){
+			padding-left: 1em;
+		}
 	}
 `;
