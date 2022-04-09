@@ -108,8 +108,8 @@ export default styled(ParachainsTableRow)`
 	}
 	
 	td {
-		padding-top: 24px !important;
-		padding-bottom: 24px !important;
+		padding-top: 16px !important;
+		padding-bottom: 16px !important;
 		font-size: 16px;
 		font-weight: 500;
 		color: #75767C;

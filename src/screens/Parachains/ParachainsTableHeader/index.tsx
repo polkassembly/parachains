@@ -40,7 +40,7 @@ const ParachainsTableHeader = function ({
 				<Table.HeaderCell width={1}>
 					<span className='title'>Investors</span>
 					<div className='tooltip-icon'>
-						<HelperTooltip position='left center' content='Project tnvestors count' />
+						<HelperTooltip position='left center' content='Project investors count' />
 					</div>
 				</Table.HeaderCell>
 				<Table.HeaderCell width={1}>

@@ -213,7 +213,7 @@ const ParachainInfoCard = ({ className, network }: Props) => {
 											withUnit: false
 										}
 									)
-								)}
+								)}&nbsp;{network == 'polkadot' ? 'DOT' : 'KSM' }
 							</span>
 						) : (
 							<div>
@@ -223,10 +223,10 @@ const ParachainInfoCard = ({ className, network }: Props) => {
 					</span>
 
 					<span className="dotDivider"></span>
-					<span>{availableUSD}</span>
+					<span>${availableUSD}</span>
 				</Card.Header>
 				<Card.Meta className='parachain-card-meta'>
-					11% of Total Supply Locked in Parachains and Crowdloans
+					{network == 'polkadot' ? '11%' : '31%' } of Total Supply Locked in Parachains and Crowdloans
 				</Card.Meta>
 
 				<Divider />
@@ -267,8 +267,8 @@ const ParachainInfoCard = ({ className, network }: Props) => {
 export default styled(ParachainInfoCard)`
 		border-radius: 10px !important;
 		padding: 6px 0.1em !important;
-		min-width: 500px !important;
-		width: 500px !important;
+		min-width: min-content !important;
+		/* width: 500px !important; */
 		margin-right: 28px !important;
 
 		.parachain-card-header {

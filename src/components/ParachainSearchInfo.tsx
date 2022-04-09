@@ -15,13 +15,11 @@ const ParachainSearchInfo = ({ className }: Props) => {
 		<div className={className}>
 			<Card fluid className='parachainSearchInfo-card'>
 				<Card.Content>
-					<Grid centered stackable columns={2} verticalAlign='middle'>
+					<Grid stackable columns={1} verticalAlign='middle'>
 						<Grid.Column className='parachainSearchInfo-text' mobile={16} tablet={8} computer={10}>
 							<h4> Polkadot and Kusama ecosystems directory </h4>
 						</Grid.Column>
-						<Grid.Column className='' mobile={16} tablet={8} computer={6}>
-							{/* TODO: Make Search Bar */}
-						</Grid.Column>
+						{/* TODO: Make Search Bar */}
 					</Grid>
 				</Card.Content>
 			</Card>
