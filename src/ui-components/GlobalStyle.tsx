@@ -63,11 +63,11 @@ export const GlobalStyle = createGlobalStyle`
 
     .route-wrapper {
         margin: 2em auto 6em auto;
-        width: 100%;
+        width: 100vw;
 
         @media only screen and (min-width: 769px) {
             margin: 1em auto 6em auto;
-            width: 90%;
+            width: 97vw;
         }
     }
 
