@@ -62,12 +62,23 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .route-wrapper {
-        margin: 2em auto 6em auto;
-        width: 100vw;
+        flex: 1;
 
-        @media only screen and (min-width: 769px) {
+        @media screen and (max-width:992px) {
             margin: 1em auto 6em auto;
-            width: 97vw;
+            max-width: 95% !important;
+        }
+
+        &.collapsed {
+            @media screen and (min-width:992px) {
+                margin: 2em 1em 6em 3em;
+                max-width: calc(100vw - 110px);
+            }
+        }
+
+        @media screen and (min-width:992px) {
+            margin: 2em 1em 6em 3em;
+            max-width: calc(100vw - 290px);
         }
     }
 
