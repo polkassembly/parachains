@@ -28,6 +28,9 @@ const AllParachainsTable = ({ className, data }:Props) => {
 						return <ParachainsTableRow key={project.id} {...project} />;
 					}
 				)}
+				<div className='coming-soon-row'>
+						More projects coming soon...
+				</div>
 			</Table.Body>
 		</Table>
 	</Tab.Pane>;
@@ -43,47 +46,55 @@ export default styled(AllParachainsTable)`
 		overflow-x: auto;
 		overflow-y: hidden;
 
-    .tab-header {
-      background: white;
-      border-top-left-radius: 0.5em;
-      border-top-right-radius: 0.5em;
-      padding-top: 0.5em;
-      margin-left: 0.5em;
-    }
-  
-    .tab-menu {
-      overflow-x: auto;
-      overflow-y: hidden;
-  
-      a.active {
-        border-bottom: 5px solid #E5007A !important;
-      }
-    }
-  
-    .item:first-child{
-      margin-left: 1em !important;
-    }
-  
-    .item {
-      font-size: 1.5em;
-    }
-  
-    .table-header{
-      background: #F2F2F2;
-  
-      th {
-        font-weight: 500 !important;
-        padding-top: 1.5em;
-        padding-bottom: 1.5em;
+		.tab-header {
+			background: white;
+			border-top-left-radius: 0.5em;
+			border-top-right-radius: 0.5em;
+			padding-top: 0.5em;
+			margin-left: 0.5em;
+		}
+	
+		.tab-menu {
+			overflow-x: auto;
+			overflow-y: hidden;
+	
+			a.active {
+				border-bottom: 5px solid #E5007A !important;
+			}
+		}
+	
+		.item:first-child{
+			margin-left: 1em !important;
+		}
+	
+		.item {
+			font-size: 1.5em;
+		}
+	
+		.table-header{
+			background: #F2F2F2;
+	
+			th {
+				font-weight: 500 !important;
+				padding-top: 1.5em;
+				padding-bottom: 1.5em;
 
-        :not(:first-child){
-          span {
-            border-left: 1px solid #ddd;
-            padding: 0.3em 0 0.3em 1em;
-            margin-left: -1em;
-          }
-        }
-      }
-    }
+				:not(:first-child){
+					span {
+						border-left: 1px solid #ddd;
+						padding: 0.3em 0 0.3em 1em;
+						margin-left: -1em;
+					}
+				}
+			}
+		}
+
+		.coming-soon-row {
+			padding: 2em 1em !important;
+			font-size: 16px;
+			font-weight: 500;
+			color: #75767C;
+			width: 100%;
+		}
 	}
 `;

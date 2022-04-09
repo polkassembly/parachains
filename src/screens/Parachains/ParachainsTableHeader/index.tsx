@@ -26,7 +26,7 @@ const ParachainsTableHeader = function ({
 					</div>
 				</Table.HeaderCell>
 				<Table.HeaderCell width={2}>
-					<span className='title'>Tokens</span>
+					<span className='title'>Token</span>
 					<div className='tooltip-icon'>
 						<HelperTooltip position='left center' content='Project Tokens' />
 					</div>
