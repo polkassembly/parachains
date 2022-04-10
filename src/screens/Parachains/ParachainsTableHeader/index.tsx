@@ -52,7 +52,9 @@ const ParachainsTableHeader = function ({
 };
 
 export default styled(ParachainsTableHeader)`
-	background: #F2F2F2;
+	position: sticky;
+	top: 0;
+	z-index: 200;
 
 	th {
 		font-weight: 500 !important;
