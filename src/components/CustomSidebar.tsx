@@ -274,15 +274,18 @@ export default styled(CustomSidebar)`
 				color: #fff !important;
 			}
 		}
+
+		.icon {
+			color: #778192 !important;
+			min-width: 20px !important;
+			max-width: 20px !important;
+			width: 20px !important;
+		}
 		
 		&:hover {
 			background: #eee;
 		}
-
-		.icon {
-			color: #778192 !important;
-		}
-
+		
 		.header {
 			color: #778192 !important;
 			font-size: 1em;
