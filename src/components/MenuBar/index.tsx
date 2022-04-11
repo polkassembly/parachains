@@ -34,10 +34,6 @@ const MenuBar = ({ className } : Props): JSX.Element => {
 };
 
 export default styled(MenuBar)`
-@media only screen and (min-width: 992px) {
-	height: 80px;
-}
-
 	&.ui.menu, .ui.inverted.menu {
 		font-family: font_default;
 		background-color: nav_black;

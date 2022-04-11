@@ -57,7 +57,7 @@ export default styled(AllParachainsTable)`
 		.tab-menu {
 			overflow-x: auto;
 			overflow-y: hidden;
-	
+
 			a.active {
 				border-bottom: 5px solid #E5007A !important;
 			}

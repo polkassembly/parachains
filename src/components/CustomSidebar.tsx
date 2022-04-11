@@ -247,7 +247,7 @@ export default styled(CustomSidebar)`
 	.sidebar-collapse-btn{
 		position: absolute;
 		top: 500px;
-		left: 229px;
+		left: 217px;
 		background: #fff;
 		height: 4em;
 		width: 1em;
@@ -274,15 +274,18 @@ export default styled(CustomSidebar)`
 				color: #fff !important;
 			}
 		}
+
+		.icon {
+			color: #778192 !important;
+			min-width: 20px !important;
+			max-width: 20px !important;
+			width: 20px !important;
+		}
 		
 		&:hover {
 			background: #eee;
 		}
-
-		.icon {
-			color: #778192 !important;
-		}
-
+		
 		.header {
 			color: #778192 !important;
 			font-size: 1em;
@@ -307,5 +310,10 @@ export default styled(CustomSidebar)`
 				cursor: pointer;
 			}
 		}
+	}
+
+	.sidebar-parent {
+		position: sticky;
+		top: -167px;
 	}
 `;

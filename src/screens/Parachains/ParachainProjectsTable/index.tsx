@@ -68,6 +68,7 @@ export default styled(ParachainProjectsTable)`
 		.tab-menu {
 			overflow-x: auto;
 			overflow-y: hidden;
+			margin-bottom: 0 !important;
 
 			.no-label-item {
 				padding-top: 1.15em;
