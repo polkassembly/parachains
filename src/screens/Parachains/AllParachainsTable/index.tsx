@@ -17,6 +17,7 @@ interface Props {
 }
 
 const AllParachainsTable = ({ className, data }:Props) => {
+	let serialNum = 0;
 	return <Tab.Pane loading={!data} className={className}>
 		<Table basic='very' striped unstackable selectable columns={6}>
 			{/* <ParachainsFilterHeader className={className} data={data} /> */}
@@ -25,7 +26,8 @@ const AllParachainsTable = ({ className, data }:Props) => {
 			<Table.Body>
 				{data.map(
 					(project: any) => {
-						return <ParachainsTableRow key={project.id} {...project} />;
+						serialNum++;
+						return <ParachainsTableRow key={project.id} serialNum={serialNum} {...project} />;
 					}
 				)}
 				<div className='coming-soon-row'>

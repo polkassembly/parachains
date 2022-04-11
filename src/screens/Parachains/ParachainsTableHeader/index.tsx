@@ -18,6 +18,7 @@ const ParachainsTableHeader = function ({
 	return (
 		<Table.Header className={`${className}`}>
 			<Table.Row>
+				<Table.HeaderCell><span className='title'>#</span></Table.HeaderCell>
 				<Table.HeaderCell width={8}><span className='title'>Project</span></Table.HeaderCell>
 				<Table.HeaderCell width={2}>
 					<span className='title'>Status</span>
@@ -60,7 +61,13 @@ export default styled(ParachainsTableHeader)`
 		font-weight: 500 !important;
 		padding-top: 1.5em;
 		padding-bottom: 1.5em;
-		min-width: 130px;
+		:not(:first-child){
+			min-width: 130px;
+		}
+		:first-child {
+			padding: 0 !important;
+			text-align: center !important;
+		}
 
 		.tooltip-icon {
 			margin-left: 12px;

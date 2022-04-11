@@ -14,7 +14,8 @@ import w3fRedLogo from '../../../assets/parachains/w3f-red.png';
 import polkadotLogo from '../../../assets/polkadot-logo-small-inverted.png';
 
 interface ParachainsTableRowProps {
-	id: number
+	id: number,
+	serialNum: number,
 	className?: string
 	badges: string[]
 	githubURL: string
@@ -30,6 +31,7 @@ interface ParachainsTableRowProps {
 const ParachainsTableRow = function ({
 	className,
 	// id,
+	serialNum,
 	badges,
 	githubURL,
 	investorsCount,
@@ -68,6 +70,7 @@ const ParachainsTableRow = function ({
 
 	return (
 		<Table.Row className={className}>
+			<Table.Cell>{serialNum}</Table.Cell>
 			<Table.Cell className='project-cell'>
 				<img src={logoURL} height={34} width={34} alt={`${name} Logo`} />
 				<span className='project-name'>{name}</span>
@@ -135,6 +138,11 @@ export default styled(ParachainsTableRow)`
 		font-size: 16px;
 		font-weight: 500;
 		color: #75767C;
+		
+		:first-child {
+			padding: 0 !important;
+			text-align: center !important;
+		}
 	}
 
 	.dotDivider {
