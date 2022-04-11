@@ -8,7 +8,9 @@ import { Label, Popup, Table } from 'semantic-ui-react';
 import kusamaLogo from 'src/assets/kusama-logo.gif';
 
 import githubLogo from '../../../assets/parachains/github.png';
+import w3fBlackLogo from '../../../assets/parachains/w3f-black.png';
 import w3fGreenLogo from '../../../assets/parachains/w3f-green.png';
+import w3fRedLogo from '../../../assets/parachains/w3f-red.png';
 import polkadotLogo from '../../../assets/polkadot-logo-small-inverted.png';
 
 interface ParachainsTableRowProps {
@@ -22,7 +24,7 @@ interface ParachainsTableRowProps {
 	status: string
 	token: string
 	tokenPriceUSD: number
-	w3fGrant: { [key: string]: number; }
+	w3fGrant: { [key: string]: any; } | null
 }
 
 const ParachainsTableRow = function ({
@@ -43,10 +45,26 @@ const ParachainsTableRow = function ({
 		return str.replace(
 			/\w\S*/g,
 			function(txt) {
-				return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+				return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase();
 			}
 		);
 	}
+
+	const popupContent = () => {
+		let content = '';
+		if(w3fGrant){
+			if(w3fGrant.terminated){
+				content = toTitleCase(`W3F grant TERMINATED: "${w3fGrant.terminationReason}"`);
+			}else if(w3fGrant.milestoneText){
+				content = toTitleCase(`${w3fGrant.received} W3F grant(s) received, ${w3fGrant.milestoneText}`);
+			}else{
+				content = toTitleCase(`${w3fGrant.received} received, ${w3fGrant.completed} completed`);
+			}
+		}else {
+			content = '';
+		}
+		return content;
+	};
 
 	return (
 		<Table.Row className={className}>
@@ -63,7 +81,7 @@ const ParachainsTableRow = function ({
 			</Table.Cell>
 
 			<Table.Cell>
-				<Popup content={toTitleCase(status)} className='text-capitalize' hoverable size='huge' trigger={
+				<Popup content={toTitleCase(status)} className='text-capitalize' hoverable size='huge' wide='very' trigger={
 					status == 'live on polkadot' ?
 						<img src={polkadotLogo} height={32} width={32} alt='Polkadot Logo' /> :
 						<img src={kusamaLogo} height={32} width={32} alt='Kusama Logo' />
@@ -83,12 +101,16 @@ const ParachainsTableRow = function ({
 				</div>
 			</Table.Cell>
 			<Table.Cell>
-				<Popup content={toTitleCase(`${w3fGrant.received} received, ${w3fGrant.completed} completed`)} className='text-capitalize' hoverable size='huge' trigger={
-					<img src={w3fGreenLogo} height={28} width={28} alt='W3F Logo' />
-				} />
+				{w3fGrant &&
+					<Popup content={popupContent} className='text-capitalize' hoverable size='huge'
+						trigger={
+							<img src={w3fGrant.terminated ? w3fRedLogo : w3fGrant.milestoneText? w3fBlackLogo : w3fGreenLogo} height={28} width={28} alt='W3F Logo' />
+						}
+					/>
+				}
 			</Table.Cell>
 			<Table.Cell>
-				{investorsCount}
+				{investorsCount == 0 ? '' : investorsCount }
 			</Table.Cell>
 			<Table.Cell>
 				<a href={githubURL} target='_blank' rel='noreferrer'>
