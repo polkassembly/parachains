@@ -44,7 +44,7 @@ const ParachainsTableHeader = function ({
 						<HelperTooltip position='left center' content='Project investors count' />
 					</div>
 				</Table.HeaderCell>
-				<Table.HeaderCell width={1}>
+				<Table.HeaderCell className='width-70'>
 					<span className='title'>Github</span>
 				</Table.HeaderCell>
 			</Table.Row>
@@ -66,6 +66,7 @@ export default styled(ParachainsTableHeader)`
 		}
 		:first-child {
 			padding: 0 !important;
+			min-width: 50px;
 			text-align: center !important;
 		}
 
@@ -89,5 +90,11 @@ export default styled(ParachainsTableHeader)`
 			padding-right: 0 !important;
 			width: 120px !important;
 		}
+	}
+
+	.width-70 {
+		min-width: 70px !important;
+		max-width: 70px !important;
+		width: 70px !important;
 	}
 `;

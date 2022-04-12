@@ -7,6 +7,7 @@ import React from 'react';
 import { Label, Popup, Table } from 'semantic-ui-react';
 import kusamaLogo from 'src/assets/kusama-logo.gif';
 
+import auctionIcon from '../../../assets/parachains/auction.png';
 import githubLogo from '../../../assets/parachains/github.png';
 import w3fBlackLogo from '../../../assets/parachains/w3f-black.png';
 import w3fGreenLogo from '../../../assets/parachains/w3f-green.png';
@@ -18,6 +19,7 @@ interface ParachainsTableRowProps {
 	serialNum: number,
 	className?: string
 	badges: string[]
+	chain: string,
 	githubURL: string
 	investorsCount: number
 	logoURL: string
@@ -33,6 +35,7 @@ const ParachainsTableRow = function ({
 	// id,
 	serialNum,
 	badges,
+	chain,
 	githubURL,
 	investorsCount,
 	logoURL,
@@ -52,7 +55,7 @@ const ParachainsTableRow = function ({
 		);
 	}
 
-	const popupContent = () => {
+	const grantPopupContent = () => {
 		let content = '';
 		if(w3fGrant){
 			if(w3fGrant.terminated){
@@ -85,9 +88,17 @@ const ParachainsTableRow = function ({
 
 			<Table.Cell>
 				<Popup content={toTitleCase(status)} className='text-capitalize' hoverable size='huge' wide='very' trigger={
-					status == 'live on polkadot' ?
-						<img src={polkadotLogo} height={32} width={32} alt='Polkadot Logo' /> :
-						<img src={kusamaLogo} height={32} width={32} alt='Kusama Logo' />
+					<div className='flex-center'>
+						{
+							status.search('auction') !== -1 ?
+								<img src={auctionIcon} className='mr-10' height={24} width={24} alt='Auction Icon' /> :
+								null
+						}
+						{chain == 'polkadot' ?
+							<img src={polkadotLogo} className='border-round' height={32} width={32} alt='Polkadot Logo' /> :
+							<img src={kusamaLogo} className='border-round' height={32} width={32} alt='Kusama Logo' />
+						}
+					</div>
 				} />
 			</Table.Cell>
 
@@ -105,7 +116,7 @@ const ParachainsTableRow = function ({
 			</Table.Cell>
 			<Table.Cell>
 				{w3fGrant &&
-					<Popup content={popupContent} className='text-capitalize' hoverable size='huge'
+					<Popup content={grantPopupContent} className='text-capitalize' hoverable size='huge'
 						trigger={
 							<img src={w3fGrant.terminated ? w3fRedLogo : w3fGrant.milestoneText? w3fBlackLogo : w3fGreenLogo} height={28} width={28} alt='W3F Logo' />
 						}
@@ -128,8 +139,17 @@ export default styled(ParachainsTableRow)`
 	cursor: pointer !important;
 	text-transform: capitalize !important;
 
-	img {
+	.border-round {
 		border-radius: 50%;
+	}
+	
+	.mr-10 {
+		margin-right: 10px;
+	}
+	
+	.flex-center {
+		display: flex;
+		align-items: center;
 	}
 	
 	td {

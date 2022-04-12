@@ -30,9 +30,6 @@ const AllParachainsTable = ({ className, data }:Props) => {
 						return <ParachainsTableRow key={project.id} serialNum={serialNum} {...project} />;
 					}
 				)}
-				<div className='coming-soon-row'>
-						More projects coming soon...
-				</div>
 			</Table.Body>
 		</Table>
 	</Tab.Pane>;
