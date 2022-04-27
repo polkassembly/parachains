@@ -61,14 +61,6 @@ export default styled(ParachainsTableHeader)`
 		font-weight: 500 !important;
 		padding-top: 1.5em;
 		padding-bottom: 1.5em;
-		:not(:first-child){
-			min-width: 130px;
-		}
-		:first-child {
-			padding: 0 !important;
-			min-width: 50px;
-			text-align: center !important;
-		}
 
 		.tooltip-icon {
 			margin-left: 12px;
@@ -78,7 +70,14 @@ export default styled(ParachainsTableHeader)`
 			}
 		}
 
+		:first-child {
+			padding: 0 !important;
+			min-width: 50px;
+			text-align: center !important;
+		}
+
 		:not(:first-child){
+			min-width: 130px;
 			span.title {
 				border-left: 1px solid #ddd;
 				padding: 0.3em 0 0.3em 1em;

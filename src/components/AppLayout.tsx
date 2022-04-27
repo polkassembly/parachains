@@ -10,12 +10,17 @@ import SwitchRoutes from './SwitchRoutes';
 
 function AppLayout() {
 	const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(false);
+	const [sidebarHidden, setSidebarHidden] = useState<boolean>(true);
+
+	const toggleSidebarHidden = () => {
+		setSidebarHidden(!sidebarHidden);
+	};
 
 	return (
 		<>
-			<MenuBar />
+			<MenuBar toggleSidebarHidden={toggleSidebarHidden} />
 			<div className='d-flex'>
-				<CustomSidebar setIsCollapsed={setSidebarCollapsed} />
+				<CustomSidebar sidebarHidden={sidebarHidden} setIsCollapsed={setSidebarCollapsed} />
 				<div className={`route-wrapper ${sidebarCollapsed ? 'collapsed' : ''}` }>
 					<SwitchRoutes />
 				</div>

@@ -65,7 +65,7 @@ export const GlobalStyle = createGlobalStyle`
         flex: 1;
 
         @media screen and (max-width:992px) {
-            margin: 1em auto 6em auto;
+            margin: 60px auto 6em auto;
             max-width: 95% !important;
         }
 

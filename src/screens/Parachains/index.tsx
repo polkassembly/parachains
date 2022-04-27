@@ -49,7 +49,6 @@ export default styled(Parachains)`
 		font-size: 48px;
 		font-weight: 500;
 		margin-bottom: 28px !important;
-		margin-top: 28px;
 	}
 
 	h2 {

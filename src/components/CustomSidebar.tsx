@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 import { Icon, List } from 'semantic-ui-react';
 import { useRouter } from 'src/hooks';
 
-const CustomSidebar = ({ className, setIsCollapsed } : { className?: string, setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>> }): JSX.Element => {
+const CustomSidebar = ({ className, setIsCollapsed, sidebarHidden } : { className?: string, setIsCollapsed: React.Dispatch<React.SetStateAction<boolean>>, sidebarHidden: boolean }): JSX.Element => {
 	const SidebarItems = [
 		{
 			icon: <Icon name='th' />,
@@ -130,10 +130,10 @@ const CustomSidebar = ({ className, setIsCollapsed } : { className?: string, set
 
 	return (
 		<>
-			<div className={className} style={ sidebarCollapsed ? { minWidth: '47px', padding: '1.5em 0.2em 0 0.2em', width:'47px' } : {} }>
+			<div className={`${className} ${sidebarHidden ? 'hidden-sm' : ''}`} style={ sidebarCollapsed ? { minWidth: '47px', padding: '1.5em 0.2em 0 0.2em', width:'47px' } : {} }>
 				<div className='sidebar-parent'>
-					<div onClick={ toggleSidebarCollapse } className='sidebar-collapse-btn' style={ sidebarCollapsed ? { left: '47px' } : {} }>
-						<Icon size='small' name={sidebarCollapsed ? 'chevron right': 'chevron left' } />
+					<div onClick={ toggleSidebarCollapse } className='sidebar-collapse-btn' style={ sidebarCollapsed ? { left: '20px' } : {} }>
+						<Icon size='small' name={sidebarCollapsed ? 'chevron up': 'chevron down' } />
 					</div>
 
 					<List size='large' verticalAlign='middle'>
@@ -239,24 +239,49 @@ export default styled(CustomSidebar)`
 	min-width: 230px;
 	padding: 1.5em 0.8em 0 0.8em;
 	box-shadow: 0.5px 0 5px -2px #888;
+	
+	.header { 
+		font-family: 'Roboto' !important;
+	}
 
 	@media only screen and (max-width: 992px) {
-		display: none;
+		position: fixed;
+		z-index: 300;
+		top: 25px;
+		height: 100vh;
+		width: 60%;
+		padding-right: 0;
+		max-width: 250px;
+
+		&.hidden-sm {
+			display: none;
+		}
 	}
 
 	.sidebar-collapse-btn{
 		position: absolute;
-		top: 500px;
-		left: 217px;
-		background: #fff;
-		height: 4em;
-		width: 1em;
+		top: 439px;
+		left: 194px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		cursor: pointer;
 		z-index: 100;
-		border-radius: 0 30px 30px 0;
+		border-bottom: 14px solid #fff;
+		border-left: 12px solid transparent;
+		border-right: 12px solid transparent;
+		height: 0;
+		width: 63px;
+    transform : rotate(90deg);
+    filter: drop-shadow(3px -1px 1px #88888860);
+
+		.icon {
+			margin-bottom: -17px;
+		}
+
+		@media only screen and (max-width: 992px) {
+			display: none;
+		}
 	}
 
 	.sidebar-item {
@@ -274,6 +299,10 @@ export default styled(CustomSidebar)`
 				color: #fff !important;
 			}
 		}
+		
+		&:hover {
+			background: #eee;
+		}
 
 		.icon {
 			color: #778192 !important;
@@ -281,11 +310,7 @@ export default styled(CustomSidebar)`
 			max-width: 20px !important;
 			width: 20px !important;
 		}
-		
-		&:hover {
-			background: #eee;
-		}
-		
+
 		.header {
 			color: #778192 !important;
 			font-size: 1em;
@@ -305,6 +330,7 @@ export default styled(CustomSidebar)`
 			text-transform: uppercase;
 			display: flex !important;
 			justify-content: space-between;
+			font-family: 'Roboto' !important;
 
 			.icon {
 				cursor: pointer;
@@ -315,5 +341,12 @@ export default styled(CustomSidebar)`
 	.sidebar-parent {
 		position: sticky;
 		top: -167px;
+
+		@media only screen and (max-width: 992px) {
+			overflow-y: auto;
+			position: static;
+			height: 93.8vh;
+			padding-right: 1rem;
+		}
 	}
 `;
