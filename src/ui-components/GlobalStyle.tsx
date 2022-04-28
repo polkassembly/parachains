@@ -71,13 +71,13 @@ export const GlobalStyle = createGlobalStyle`
 
         &.collapsed {
             @media screen and (min-width:992px) {
-                margin: 2em 1em 6em 3em;
+                margin: 2em 1em 6em 2em;
                 max-width: calc(100vw - 110px);
             }
         }
 
         @media screen and (min-width:992px) {
-            margin: 2em 1em 6em 3em;
+            margin: 2em 1em 6em 2em;
             max-width: calc(100vw - 290px);
         }
     }
