@@ -4,8 +4,8 @@
 
 import styled from '@xstyled/styled-components';
 import React, { useEffect, useState } from 'react';
-import { Card } from 'semantic-ui-react';
-import ParachainInfoCard from 'src/components/ParachainInfoCard';
+// import { Card } from 'semantic-ui-react';
+// import ParachainInfoCard from 'src/components/ParachainInfoCard';
 import ParachainSearchInfo from 'src/components/ParachainSearchInfo';
 
 import ParachainProjectsTable from './ParachainProjectsTable';
@@ -28,13 +28,13 @@ const Parachains = ({ className }: Props) => {
 
 	return (
 		<div className={className}>
-			<h1 className='ma-sm-1'>Projects Directory</h1>
 			<ParachainSearchInfo className='ma-sm-1' />
 
-			<Card.Group className='card-group'>
-				<ParachainInfoCard network='polkadot' />
-				<ParachainInfoCard network='kusama' />
-			</Card.Group>
+			{/* <Card.Group className='card-group'>
+						<ParachainInfoCard network='polkadot' />
+						<ParachainInfoCard network='kusama' />
+					</Card.Group>
+			*/}
 
 			{parachainsData.length > 0 ? <div>
 				<h2>Projects</h2>

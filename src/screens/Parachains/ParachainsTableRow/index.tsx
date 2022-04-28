@@ -7,8 +7,11 @@ import React from 'react';
 import { Label, Popup, Table } from 'semantic-ui-react';
 import kusamaLogo from 'src/assets/kusama-logo.gif';
 
+import announcedIcon from '../../../assets/parachains/announced.png';
 import auctionIcon from '../../../assets/parachains/auction.png';
+import liveIcon from '../../../assets/parachains/chain.png';
 import githubLogo from '../../../assets/parachains/github.png';
+import testingIcon from '../../../assets/parachains/testing.png';
 import w3fBlackLogo from '../../../assets/parachains/w3f-black.png';
 import w3fGreenLogo from '../../../assets/parachains/w3f-green.png';
 import w3fRedLogo from '../../../assets/parachains/w3f-red.png';
@@ -90,29 +93,33 @@ const ParachainsTableRow = function ({
 				<Popup content={toTitleCase(status)} className='text-capitalize' hoverable size='huge' wide='very' trigger={
 					<div className='flex-center'>
 						{
-							status.search('auction') !== -1 ?
-								<img src={auctionIcon} className='mr-10' height={24} width={24} alt='Auction Icon' /> :
-								null
-						}
-						{chain == 'polkadot' ?
-							<img src={polkadotLogo} className='border-round' height={32} width={32} alt='Polkadot Logo' /> :
-							<img src={kusamaLogo} className='border-round' height={32} width={32} alt='Kusama Logo' />
+							status.search('auction') !== -1 ? <><img src={auctionIcon} className='mr-10' height={22} width={22} alt='Auction Icon' /> In Auction</>:
+								status.search('Testing') !== -1 ? <><img src={testingIcon} className='mr-10' height={22} width={22} alt='Testing Icon' /> Testing</> :
+									status.search('announced') !== -1 ? <><img src={announcedIcon} className='mr-10' height={22} width={22} alt='Announced Icon' /> Announced</>:
+										status.search('live') !== -1 ? <><img src={liveIcon} className='mr-10' height={22} width={22} alt='Live Icon' /> Live</> : null
 						}
 					</div>
 				} />
 			</Table.Cell>
 
+			<Table.Cell>
+				{chain == 'polkadot' ?
+					<img src={polkadotLogo} className='border-round' height={32} width={32} alt='Polkadot Logo' /> :
+					<img src={kusamaLogo} className='border-round' height={32} width={32} alt='Kusama Logo' />
+				}
+			</Table.Cell>
+
 			<Table.Cell className='project-token-cell'>
-				<div>
-					<span>
-						{token}
-					</span>
-					{/* TODO: Implement tokenPriceUSD */}
-					{/* <span className="dotDivider"></span>
+				<span>
+					{token}
+				</span>
+				{/* TODO: Implement tokenPriceUSD */}
+				{
+					/*<span className="dotDivider"></span>
 					<span>
 						${tokenPriceUSD}
-					</span> */}
-				</div>
+					</span> */
+				}
 			</Table.Cell>
 			<Table.Cell>
 				{w3fGrant &&
@@ -150,6 +157,7 @@ export default styled(ParachainsTableRow)`
 	.flex-center {
 		display: flex;
 		align-items: center;
+		justify-content: start;
 	}
 	
 	td {
@@ -158,11 +166,9 @@ export default styled(ParachainsTableRow)`
 		font-size: 16px;
 		font-weight: 500;
 		color: #75767C;
-		
-		:first-child {
-			padding: 0 !important;
-			text-align: center !important;
-		}
+		text-align: center !important;
+		min-width: max-content;
+		white-space: nowrap;
 	}
 
 	.dotDivider {
@@ -176,7 +182,7 @@ export default styled(ParachainsTableRow)`
 	.project-cell {
 		display: flex;
 		align-items: center;
-		min-width: 480px;
+		min-width: max-content;
 		
 		.project-name {
 			margin-left: 16px;

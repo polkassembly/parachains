@@ -19,12 +19,15 @@ const ParachainsTableHeader = function ({
 		<Table.Header className={`${className}`}>
 			<Table.Row>
 				<Table.HeaderCell><span className='title'>#</span></Table.HeaderCell>
-				<Table.HeaderCell width={8}><span className='title'>Project</span></Table.HeaderCell>
-				<Table.HeaderCell width={2}>
+				<Table.HeaderCell className='project-title-cell' width={8}><span className='title'>Project</span></Table.HeaderCell>
+				<Table.HeaderCell width={2} className='status-cell'>
 					<span className='title'>Status</span>
 					<div className='tooltip-icon'>
 						<HelperTooltip position='left center' content='Current Project Status, one of : Announced, Testing, In Auction, Parachain' />
 					</div>
+				</Table.HeaderCell>
+				<Table.HeaderCell width={1}>
+					<span className='title'>Chain</span>
 				</Table.HeaderCell>
 				<Table.HeaderCell width={2}>
 					<span className='title'>Token</span>
@@ -61,6 +64,11 @@ export default styled(ParachainsTableHeader)`
 		font-weight: 500 !important;
 		padding-top: 1.5em;
 		padding-bottom: 1.5em;
+		text-align: center !important;
+
+		&.project-title-cell, &.status-cell {
+			text-align: left !important;
+		}
 
 		.tooltip-icon {
 			margin-left: 12px;
@@ -73,7 +81,6 @@ export default styled(ParachainsTableHeader)`
 		:first-child {
 			padding: 0 !important;
 			min-width: 50px;
-			text-align: center !important;
 		}
 
 		:not(:first-child){
@@ -90,7 +97,7 @@ export default styled(ParachainsTableHeader)`
 			width: 120px !important;
 		}
 	}
-
+	
 	.width-70 {
 		min-width: 70px !important;
 		max-width: 70px !important;
