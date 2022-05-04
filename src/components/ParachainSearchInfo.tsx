@@ -4,7 +4,6 @@
 
 import styled from '@xstyled/styled-components';
 import React from 'react';
-import { Card, Grid } from 'semantic-ui-react';
 
 interface Props {
 	className?: string
@@ -13,35 +12,36 @@ interface Props {
 const ParachainSearchInfo = ({ className }: Props) => {
 	return (
 		<div className={className}>
-			<Card fluid className='parachainSearchInfo-card'>
-				<Card.Content>
-					<Grid stackable columns={1} verticalAlign='middle'>
-						<Grid.Column className='parachainSearchInfo-text' mobile={16} tablet={8} computer={10}>
-							<h4> Polkadot and Kusama ecosystems directory </h4>
-						</Grid.Column>
-						{/* TODO: Make Search Bar */}
-					</Grid>
-				</Card.Content>
-			</Card>
+			<div className="text">Polkadot and Kusama ecosystems directory</div>
 		</div>
 	);
 };
 
 export default styled(ParachainSearchInfo)`
-	.parachainSearchInfo-card {
-		background: #E5007A !important;
-		border-radius: 0.8em;
-		padding: 0.8em 0.3em 0.8em 0.3em;
-		-webkit-box-shadow: 0px 5px 10px 1px rgba(186,182,186,1);
-		-moz-box-shadow: 0px 5px 10px 1px rgba(186,182,186,1);
-		box-shadow: 0px 5px 10px 1px rgba(186,182,186,1);
+	border-radius: 0.8em;
+	-webkit-box-shadow: 0px 5px 10px 1px rgba(186,182,186,1);
+	-moz-box-shadow: 0px 5px 10px 1px rgba(186,182,186,1);
+	box-shadow: 0px 5px 10px 1px rgba(186,182,186,1);
+	background: #E5007A !important;
+	display: flex;
+	padding: 24px 24px;
+	color: #fff;
+	font-size: 16px;
+	width: 98%;
+	justify-content: space-between;
+	text-align: left;
 
-		.parachainSearchInfo-text{
-			h4 {
-				color: #fff !important;
-				font-weight: 400;
-				font-size: 18px !important;
-			}
-		}
+	@media only screen and (max-width: 1189px) {
+		padding: 20px 20px;
+		flex-direction: column;
+		justify-content: center;
 	}
+
+	@media only screen and (max-width: 767px) {
+		flex-direction: column;
+		justify-content: center;
+		margin-left: auto !important;
+		margin-right: auto !important;
+	}
+	
 `;

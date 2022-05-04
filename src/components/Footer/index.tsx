@@ -3,129 +3,137 @@
 // of the Apache-2.0 license. See the LICENSE file for details.
 
 import styled from '@xstyled/styled-components';
-import * as moment from 'moment';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid } from 'semantic-ui-react';
+import { Divider } from 'semantic-ui-react';
 
+// import { Link } from 'react-router-dom';
 import logo from '../../assets/polkassembly-logo.png';
 
-interface Props {
-	className?: string
-}
-
-const Footer = ({ className }:Props ): JSX.Element => {
+const Footer = ({ className }:{ className?: string } ): JSX.Element => {
+	const year = new Date().getFullYear();
 
 	return (
 		<footer className={className}>
-			<Grid stackable className='footer-grid'>
-				<Grid.Column width={6}>
-					<img alt='Polkassembly Logo' src={logo} />
-				</Grid.Column>
+			<div className="flex">
+				<div className="logo">
+					<img alt='Polkassembly Logo' className='logo-img' src={logo} />
+				</div>
 
-				<Grid.Column width={4}/>
-
-				<Grid.Column width={3} className='link-col'>
-					<div className='col-heading'> Help Center </div>
-					<div className='col-links-container'>
-						<Link to="/terms-and-conditions" className='footer-link'>Terms and Conditions</Link>
-						<a href="https://github.com/premiurly/polkassembly/issues" className='footer-link'>Report an Issue</a>
+				<div className="site-links">
+					<div className="help-center-links">
+						<h3>Help Center</h3>
+						<div className='flex-col'>
+							<Link to="/terms-and-conditions" className='footer-link'>Terms and Conditions</Link>
+							<a href="https://github.com/premiurly/polkassembly/issues" target='_blank' rel='noreferrer' className='footer-link'>Report an Issue</a>
+						</div>
 					</div>
-				</Grid.Column>
-
-				<Grid.Column width={3} className='link-col'>
-					<div className='col-heading'> PolkAssembly </div>
-					<div className='col-links-container'>
-						<Link to="/terms-of-website" className='footer-link'>Terms of Website</Link>
-						<Link to="/privacy" className='footer-link'>Privacy Policy</Link>
+					<div className="pa-links">
+						<h3>Polkassembly</h3>
+						<div className='flex-col'>
+							<Link to="/terms-of-website" className='footer-link'>Terms of Website</Link>
+							<Link to="/privacy" className='footer-link'>Privacy Policy</Link>
+						</div>
 					</div>
-				</Grid.Column>
+				</div>
+			</div>
 
-				<Grid.Row className='copyright-row'>
-					<div className='copyright-div'>
-						&copy; {moment.utc().year()} Premiurly
-					</div>
-				</Grid.Row>
+			<Divider />
 
-			</Grid>
-
+			<div className='copy-year'>
+				&copy; Premiurly {year}
+			</div>
 		</footer>
 	);
 };
 
 export default styled(Footer)`
-	position: absolute;
-	display: block;
 	width: 100vw !important;
-	height: fit-content;
-	// max-height: 55vh;
 	background-color: nav_black;
 	font-family: font_default;
-	padding: 10vh 5vw;
 	color: grey_secondary;
 	font-size: 16px;
+	padding: 35px 74px;
 
-	.footer-grid {
-		width: 100%;
+	@media only screen and (max-width: 992px) {
+		padding: 25px 20px;
 	}
 
-	img {
-		width: 100%;
-  	height: auto;
-		max-width: 289px;
-		max-height: 97px;
+	
+	
+	.flex {
+		width: 90%;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 50px;
+
+		@media only screen and (max-width: 992px) {
+			flex-direction: column;
+			width: 100%;
+			margin-bottom: 15px;
+
+
+			& > .help-center-links, & > .pa-links {
+				display: none;
+			}
+		}
+
+		.site-links {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			
+			& > div {
+				margin-left: 5em;
+			}
+			
+			@media only screen and (max-width: 992px) {
+				max-width: 500px;
+				display: flex;
+				justify-content: start;
+
+
+				& > div:first-child {
+					margin-left: 0;
+				}
+
+				& > div:not(:first-child) {
+					margin-left: 30px;
+				}
+			}
+		}
+
+		.logo-img {
+			width: 250px;
+			max-width: 289px;
+			height: auto;
+
+			@media only screen and (max-width: 992px) {
+				width: 168px;
+				margin-bottom: 26px;
+			}
+		}
+
+		h3 {
+			color: #FFFFFF;
+			font-size: 16px;
+			margin-bottom: 16px;
+		}
 	}
 
-	.col-heading, .network-icon {
-		color: #fff;
-	}
-
-	.link-col{
-		padding-left: 2em;
-		padding-top: 2em;
-		margin-top: 1em;
-	}
-
-	.col-links-container {
+	.flex-col {
 		display: flex;
 		flex-direction: column;
-		margin-top: 16px;
+
 		a {
-			color: grey_secondary !important;
+			color: #ACACAC;
+			font-size: 16px;
+			margin-bottom: 8px;
 		}
 	}
 
-	.network-link-grid {
-		margin-top: 16px;
+	.copy-year {
+		margin-top: 20px;
 	}
 
-	.footer-link {
-		margin-bottom: 0.8em;
-	}
-	
-	.network-links {
-		.network-icon {
-			border: 1px solid #494949;
-			padding: 1em;
-			display: flex;
-			height: 40px;
-			width: 40px;
-			align-items: center;
-			justify-content: center;
-		}
-	}
-
-	.copyright-row {
-		margin-top: 2em;
-		margin-bottom: 0.6em !important;
-	}
-
-	.copyright-div {
-		position: absolute;
-		width: 95vw;
-		padding-top: 1em;
-		// padding-bottom: 1em;
-		border-top: solid 2px #333;
-		font-size: 14px !important;
-	}
 `;

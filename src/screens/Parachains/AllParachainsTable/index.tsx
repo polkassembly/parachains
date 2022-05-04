@@ -7,6 +7,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import { Tab, Table } from 'semantic-ui-react';
 
+import AllParachainsCard from '../AllParachainsCard';
 // import ParachainsFilterHeader from '../ParachainsFilterHeader';
 import ParachainsTableHeader from '../ParachainsTableHeader';
 import ParachainsTableRow from '../ParachainsTableRow';
@@ -19,7 +20,7 @@ interface Props {
 const AllParachainsTable = ({ className, data }:Props) => {
 	let serialNum = 0;
 	return <Tab.Pane loading={!data} className={className}>
-		<Table basic='very' striped unstackable selectable columns={6}>
+		<Table className='hidden-mobile' basic='very' striped unstackable selectable columns={6}>
 			{/* <ParachainsFilterHeader className={className} data={data} /> */}
 			<ParachainsTableHeader className={className} />
 
@@ -32,12 +33,21 @@ const AllParachainsTable = ({ className, data }:Props) => {
 				)}
 			</Table.Body>
 		</Table>
+
+		<div className="hidden-desktop">
+			{data.map(
+				(project: any) => {
+					serialNum++;
+					return <AllParachainsCard key={project.id} {...project} />;
+				}
+			)}
+		</div>
 	</Tab.Pane>;
 };
 
 export default styled(AllParachainsTable)`
 	&&& {
-		background: white;
+		background: white !important;
 		border: none !important;
 		width: 100% !important;
 		margin-left: 0 !important;
@@ -45,14 +55,22 @@ export default styled(AllParachainsTable)`
 		overflow-x: auto;
 		overflow-y: hidden;
 
-		.tab-header {
-			background: white;
-			border-top-left-radius: 0.5em;
-			border-top-right-radius: 0.5em;
-			padding-top: 0.5em;
-			margin-left: 0.5em;
+		@media only screen and (max-width: 767px) {
+			background: transparent !important;
 		}
-	
+
+		.hidden-mobile {
+			@media only screen and (max-width: 767px) {
+				display: none !important;
+			}
+		}
+
+		.hidden-desktop {
+			@media only screen and (min-width: 767px) {
+				display: none !important;
+			}
+		}
+
 		.tab-menu {
 			overflow-x: auto;
 			overflow-y: hidden;
