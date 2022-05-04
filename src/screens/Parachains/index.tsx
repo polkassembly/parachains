@@ -9,7 +9,7 @@ import { Loader } from 'semantic-ui-react';
 // import ParachainInfoCard from 'src/components/ParachainInfoCard';
 import ParachainSearchInfo from 'src/components/ParachainSearchInfo';
 
-import ParachainProjectsTable from './ParachainProjectsTable';
+import ParachainProjectsTabs from './ParachainProjectsTabs';
 
 interface Props {
   className?: string
@@ -39,7 +39,7 @@ const Parachains = ({ className }: Props) => {
 
 			{parachainsData.length > 0 ? <div>
 				<h2>Projects</h2>
-				<ParachainProjectsTable data={parachainsData} />
+				<ParachainProjectsTabs data={parachainsData} />
 			</div> : <div className="loader-cont"><Loader active inline /></div>}
 		</div>
 	);

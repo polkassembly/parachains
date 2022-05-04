@@ -13,7 +13,7 @@ interface Props {
 	data?: any
 }
 
-const ParachainProjectsTable = ({ className, data }: Props) => {
+const ParachainProjectsTabs = ({ className, data }: Props) => {
 	const kusamaData: any = data.filter((project: any) => {
 		return project.chain == 'kusama';
 	});
@@ -46,15 +46,21 @@ const ParachainProjectsTable = ({ className, data }: Props) => {
 	);
 };
 
-export default styled(ParachainProjectsTable)`
+export default styled(ParachainProjectsTabs)`
 	&&& {
 		background: white;
 		border-top-left-radius: 0.5em;
 		border-top-right-radius: 0.5em;
 		padding-top: 0.5em;
+
+		@media only screen and (max-width: 767px) {
+			background: transparent;
+		}
+
 		.item:hover {
 			border-bottom: 5px solid #E5007A !important;
 		}
+		
 
 		h1 {
 			font-size: 30px;
@@ -66,9 +72,24 @@ export default styled(ParachainProjectsTable)`
 		}
 	
 		.tab-menu {
-			overflow-x: auto;
+			overflow-x: hidden;
 			overflow-y: hidden;
 			margin-bottom: 0 !important;
+
+			&:hover {
+				overflow-x: auto;
+			}
+
+			@media only screen and (max-width: 767px) {
+				overflow-x: auto;
+				background: transparent !important;
+				-ms-overflow-style: none;  /* Internet Explorer 10+ */
+				scrollbar-width: none;  /* Firefox */
+
+				&::-webkit-scrollbar {
+					display: none;  /* Safari and Chrome */
+				}
+			}
 
 			.no-label-item {
 				padding-top: 1.15em;
@@ -108,15 +129,14 @@ export default styled(ParachainProjectsTable)`
 		}
 	
 		.tab-panel{
-			background: white;
 			border: none !important;
 			width: 100% !important;
 			margin-left: 0 !important;
 			font-size: 1.5rem;
 			overflow-x: auto;
 			overflow-y: auto;
-			max-height: 500px;
 			padding: 0 !important;
+			max-height: 500px;
 
 			table tbody {
 				tr:nth-child(2n){
