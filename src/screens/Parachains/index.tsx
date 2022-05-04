@@ -4,6 +4,7 @@
 
 import styled from '@xstyled/styled-components';
 import React, { useEffect, useState } from 'react';
+import { Loader } from 'semantic-ui-react';
 // import { Card } from 'semantic-ui-react';
 // import ParachainInfoCard from 'src/components/ParachainInfoCard';
 import ParachainSearchInfo from 'src/components/ParachainSearchInfo';
@@ -39,7 +40,7 @@ const Parachains = ({ className }: Props) => {
 			{parachainsData.length > 0 ? <div>
 				<h2>Projects</h2>
 				<ParachainProjectsTable data={parachainsData} />
-			</div> : <h2 style={ { textAlign: 'center' } }> Loading projects, please wait ...</h2>}
+			</div> : <div className="loader-cont"><Loader active inline /></div>}
 		</div>
 	);
 };
@@ -56,6 +57,12 @@ export default styled(Parachains)`
 		color: #454545;
 		margin-top: 48px;
 		margin-bottom: 16px;
+	}
+
+	.loader-cont {
+		display: flex;
+    justify-content: center;
+    margin-top: 30%;
 	}
 
 	.ma-sm-1 {
