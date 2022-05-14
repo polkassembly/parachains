@@ -16,12 +16,16 @@ function AppLayout() {
 		setSidebarHidden(!sidebarHidden);
 	};
 
+	const closeSidebar = () => {
+		setSidebarHidden(true);
+	};
+
 	return (
 		<>
 			<MenuBar toggleSidebarHidden={toggleSidebarHidden} />
 			<div className='d-flex'>
 				<CustomSidebar sidebarHidden={sidebarHidden} setIsCollapsed={setSidebarCollapsed} />
-				<div className={`route-wrapper ${sidebarCollapsed ? 'collapsed' : ''}` }>
+				<div onClick={closeSidebar} className={`route-wrapper ${sidebarCollapsed ? 'collapsed' : ''}` }>
 					<SwitchRoutes />
 				</div>
 			</div>
