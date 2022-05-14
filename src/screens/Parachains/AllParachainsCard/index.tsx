@@ -200,7 +200,7 @@ export default styled(AllParachainsCard)`
 		h3 {
 			font-size: 12px;
 			margin-bottom: 11px;
-			font-weight: 700;
+			font-weight: 500;
 		}
 
 		p, div {
@@ -217,8 +217,12 @@ export default styled(AllParachainsCard)`
 
 			.grant-data-div {
 				display: flex;
-				align-items: center;
+				align-items: start;
 				white-space: pre-wrap;
+				img {
+					margin-top: 2px;
+				}
+
 				.grant-text {
 					margin-left: 6px;
 					font-weight: 500;
@@ -263,7 +267,7 @@ export default styled(AllParachainsCard)`
 			.label {
 				background: #E5007A;
 				color: #fff;
-				font-size: 8px;
+				font-size: 10px;
 				font-weight: 400;
 				text-transform: capitalize;
 				border-radius: 48px;
