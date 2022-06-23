@@ -18,11 +18,12 @@ import w3fRedLogo from '../../../assets/parachains/w3f-red.png';
 import polkadotLogo from '../../../assets/polkadot-logo-small-inverted.png';
 
 interface ParachainsTableRowProps {
-	id: number,
-	serialNum: number,
+	chainView: boolean
+	id: number
+	serialNum: number
 	className?: string
 	badges: string[]
-	chain: string,
+	chain: string
 	githubURL: string
 	investorsCount: number
 	logoURL: string
@@ -34,6 +35,7 @@ interface ParachainsTableRowProps {
 }
 
 const ParachainsTableRow = function ({
+	chainView,
 	className,
 	// id,
 	serialNum,
@@ -102,12 +104,13 @@ const ParachainsTableRow = function ({
 				} />
 			</Table.Cell>
 
-			<Table.Cell>
+			{!chainView && <Table.Cell>
 				{chain == 'polkadot' ?
 					<img src={polkadotLogo} className='border-round' height={32} width={32} alt='Polkadot Logo' /> :
 					<img src={kusamaLogo} className='border-round' height={32} width={32} alt='Kusama Logo' />
 				}
 			</Table.Cell>
+			}
 
 			<Table.Cell className='project-token-cell'>
 				<span>

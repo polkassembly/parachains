@@ -25,15 +25,15 @@ const ParachainProjectsTabs = ({ className, data }: Props) => {
 	const panes = [
 		{
 			menuItem: <Menu.Item key='all'>All <Label circular>{data.length}</Label></Menu.Item>,
-			render: () => <AllParachainsTable data={data} className='tab-panel' />
+			render: () => <AllParachainsTable chain='all' data={data} className='tab-panel' />
 		},
 		{
 			menuItem: <Menu.Item key='kusama'>Kusama <Label circular>{kusamaData.length}</Label></Menu.Item>,
-			render: () => <AllParachainsTable data={kusamaData} className='tab-panel' />
+			render: () => <AllParachainsTable chain='kusama' data={kusamaData} className='tab-panel' />
 		},
 		{
 			menuItem: <Menu.Item key='polkadot'>Polkadot <Label circular>{polkadotData.length}</Label></Menu.Item>,
-			render: () => <AllParachainsTable data={polkadotData} className='tab-panel' />
+			render: () => <AllParachainsTable chain='polkadot' data={polkadotData} className='tab-panel' />
 		}
 		// {
 		// menuItem: <Menu.Item className='menu-right no-label-item' key='search'> <Icon name='search' /> </Menu.Item>,

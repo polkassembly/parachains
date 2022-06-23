@@ -15,20 +15,21 @@ import ParachainsTableRow from '../ParachainsTableRow';
 interface Props {
 	className?: string
 	data?: any
+	chain: 'kusama' | 'polkadot' | 'all'
 }
 
-const AllParachainsTable = ({ className, data }:Props) => {
+const AllParachainsTable = ({ chain, className, data }:Props) => {
 	let serialNum = 0;
 	return <Tab.Pane loading={!data} className={className}>
 		<Table className='hidden-mobile' basic='very' striped unstackable selectable columns={6}>
 			{/* <ParachainsFilterHeader className={className} data={data} /> */}
-			<ParachainsTableHeader className={className} />
+			<ParachainsTableHeader chain={chain} className={className} />
 
 			<Table.Body>
 				{data.map(
 					(project: any) => {
 						serialNum++;
-						return <ParachainsTableRow key={project.id} serialNum={serialNum} {...project} />;
+						return <ParachainsTableRow chainView={chain != 'all'} key={project.id} serialNum={serialNum} {...project} />;
 					}
 				)}
 			</Table.Body>
