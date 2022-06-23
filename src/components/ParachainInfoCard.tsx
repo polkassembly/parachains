@@ -39,7 +39,7 @@ const ParachainInfoCard = ({ className, network }: Props) => {
 					<span className='network-name'>{network}</span>
 				</Card.Header>
 				<Card.Meta className='parachain-card-meta'>
-					({network == 'polkadot' ? '11%' : '31%' } of Total Supply Locked<span className='hidden-sm'> in Parachains and Crowdloans</span>)
+					{network == 'polkadot' ? '11%' : '31%' } of Total Supply Locked<span className='hidden-sm'> in Parachains and Crowdloans</span>
 				</Card.Meta>
 
 				<Divider />

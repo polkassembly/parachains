@@ -9,9 +9,11 @@ import HelperTooltip from 'src/ui-components/HelperTooltip';
 
 interface ParachainsTableHeaderProps {
 	className?: string
+	chain: 'kusama' | 'polkadot' | 'all'
 }
 
 const ParachainsTableHeader = function ({
+	chain,
 	className
 }:ParachainsTableHeaderProps) {
 
@@ -26,9 +28,9 @@ const ParachainsTableHeader = function ({
 						<HelperTooltip position='left center' content='Current Project Status, one of : Announced, Testing, In Auction, Parachain' />
 					</div>
 				</Table.HeaderCell>
-				<Table.HeaderCell width={1}>
+				{chain == 'all' && <Table.HeaderCell width={1}>
 					<span className='title'>Chain</span>
-				</Table.HeaderCell>
+				</Table.HeaderCell>}
 				<Table.HeaderCell width={2}>
 					<span className='title'>Token</span>
 					<div className='tooltip-icon'>
