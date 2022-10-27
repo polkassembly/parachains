@@ -3064,5 +3064,26 @@
 		"token": "",
 		"tokenPriceUSD": null,
 		"w3fGrant": null
+	},
+	{
+		"id": 168,
+		"badges": [
+			"DeFi"
+		],
+		"chain": "kusama",
+		"githubURL": "https://github.com/pendulum-chain/pendulum",
+		"investorsCount": 6,
+		"logoURL": "https://parachains.info/images/parachains/1656914852_amplitude_logo.jpg",
+		"name": "Amplitude",
+		"status": "live on kusama",
+		"token": "AMPE",
+		"tokenPriceUSD": null,
+		"w3fGrant": {
+			"received": 1,
+			"completed": 0,
+			"milestoneText": "the first milestone delivered",
+			"terminated": false,
+			"terminationReason": ""
+		}
 	}
 ]
